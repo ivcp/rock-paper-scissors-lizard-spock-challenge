@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import ComputerPick from './components/ComputerPick';
+import Option from './components/Option';
+import PlayerPick from './components/PlayerPick';
+
+const options = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
 
 function App() {
+  const [optionSelected, setOptionSelected] = useState(false);
+  const [playerPick, setPlayerPick] = useState('');
+  const [computerPick, setComputerPick] = useState('');
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!optionSelected &&
+        options.map(option => (
+          <Option
+            key={option}
+            name={option}
+            optionSelected={optionSelected}
+            setPlayerPick={setPlayerPick}
+            setOptionSelected={setOptionSelected}
+            setComputerPick={setComputerPick}
+          />
+        ))}
+      {optionSelected && (
+        <>
+          <PlayerPick name={playerPick} /> <ComputerPick name={computerPick} />
+        </>
+      )}
     </div>
   );
 }
