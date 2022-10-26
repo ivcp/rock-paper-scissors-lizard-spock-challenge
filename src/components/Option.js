@@ -1,17 +1,24 @@
 import React from 'react';
+import { checkIfWon } from '../helpers/checkIfWon';
 
 const Option = ({
   name,
+  options,
   optionSelected,
   setPlayerPick,
   setComputerPick,
   setOptionSelected,
+  setOutcome
+  
 }) => {
   const handleClick = () => {
     if (optionSelected) return;
     setOptionSelected(true);
     setPlayerPick(name);
-    setComputerPick('spock');
+    const randomPick = options[Math.floor(Math.random() * options.length)];
+    setComputerPick(randomPick);
+    setOutcome(checkIfWon(options, name, randomPick));
+    
   };
   return <div onClick={handleClick}>{name}</div>;
 };
