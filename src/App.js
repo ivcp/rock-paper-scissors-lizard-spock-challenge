@@ -5,6 +5,9 @@ import PlayerPick from './components/PlayerPick';
 import Outcome from './components/Outcome';
 import { RPSLS, RPS } from './options';
 import getSavedScore from './helpers/getSavedScore';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from './theme/Global';
+import theme from './theme/Colors';
 
 function App() {
   const [options, setOptions] = useState(RPSLS); //add dropdown selection
@@ -25,7 +28,8 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <div>{score}</div>
       {!optionSelected &&
         options.map(option => (
@@ -49,7 +53,7 @@ function App() {
           <button onClick={playAgain}>Play Again</button>
         </>
       )}
-    </div>
+    </ThemeProvider>
   );
 }
 
