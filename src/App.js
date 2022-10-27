@@ -1,30 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ComputerPick from './components/ComputerPick';
 import Option from './components/Option';
 import PlayerPick from './components/PlayerPick';
 import Outcome from './components/Outcome';
-import { RPSLS } from './options';
-import { useEffect } from 'react';
+import { RPSLS, RPS } from './options';
+import getSavedScore from './helpers/getSavedScore';
 
 function App() {
-  const [options, setOptions] = useState(RPSLS);
+  const [options, setOptions] = useState(RPSLS); //add dropdown selection
   const [optionSelected, setOptionSelected] = useState(false);
   const [playerPick, setPlayerPick] = useState('');
   const [computerPick, setComputerPick] = useState('');
   const [outcome, setOutcome] = useState('');
-  const [score, setScore] = useState(0);
-  //maintain the store in local storage
+  const [score, setScore] = useState(getSavedScore());
+
+  console.log('app render');
 
   useEffect(() => {
-    if (outcome === '') return;
-    if (outcome === 'tie') return;
-    console.log('outcome changed');
-    if (outcome === 'win') {
-      setScore(prev => prev + 1);
-    } else {
-      setScore(prev => (prev === 0 ? prev : prev - 1));
-    }
-  }, [outcome]);
+    localStorage.setItem('score', JSON.stringify(score));
+  }, [score]);
+
+  const playAgain = () => {
+    setOptionSelected(false);
+  };
 
   return (
     <div className="App">
@@ -48,7 +46,7 @@ function App() {
           <PlayerPick name={playerPick} />
           <ComputerPick name={computerPick} />
           <Outcome outcome={outcome} />
-          <button>Play Again</button>
+          <button onClick={playAgain}>Play Again</button>
         </>
       )}
     </div>

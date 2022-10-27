@@ -8,8 +8,8 @@ const Option = ({
   setPlayerPick,
   setComputerPick,
   setOptionSelected,
-  setOutcome
-  
+  setOutcome,
+  setScore,
 }) => {
   const handleClick = () => {
     if (optionSelected) return;
@@ -17,8 +17,15 @@ const Option = ({
     setPlayerPick(name);
     const randomPick = options[Math.floor(Math.random() * options.length)];
     setComputerPick(randomPick);
-    setOutcome(checkIfWon(options, name, randomPick));
-    
+    const outcome = checkIfWon(options, name, randomPick);
+    setOutcome(outcome);
+    if (outcome === 'tie') return;
+    if (outcome === 'win') {
+      setScore(prev => prev + 1);
+    }
+    if (outcome === 'lose') {
+      setScore(prev => (prev === 0 ? prev : prev - 1));
+    }
   };
   return <div onClick={handleClick}>{name}</div>;
 };
