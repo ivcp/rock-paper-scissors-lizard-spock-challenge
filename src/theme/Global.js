@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import pentagon from '../assets/bg-pentagon.svg';
 const GlobalStyle = createGlobalStyle`
 *,
 *::before,
@@ -15,13 +16,18 @@ html {
 
 body {
   font-family: 'Barlow Semi Condensed', sans-serif;
-  background: radial-gradient(
+  min-height: 100vh;
+  background: hsl(214, 47%, 23%);   
+  background-image: url(${pentagon}), radial-gradient(
     circle at 50% 10%,
     hsl(214, 47%, 23%) 20%,
     hsl(237, 49%, 15%) 100%
   );
-  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%, 100%;  
 }
+
 
 img,
 picture {

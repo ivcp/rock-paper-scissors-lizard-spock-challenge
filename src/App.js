@@ -31,28 +31,31 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <div>{score}</div>
-      {!optionSelected &&
-        options.map(option => (
-          <Option
-            key={option}
-            name={option}
-            options={options}
-            optionSelected={optionSelected}
-            setPlayerPick={setPlayerPick}
-            setOptionSelected={setOptionSelected}
-            setComputerPick={setComputerPick}
-            setOutcome={setOutcome}
-            setScore={setScore}
-          />
-        ))}
-      {optionSelected && (
-        <>
-          <PlayerPick name={playerPick} />
-          <ComputerPick name={computerPick} />
-          <Outcome outcome={outcome} />
-          <button onClick={playAgain}>Play Again</button>
-        </>
-      )}
+      <main>
+        {!optionSelected &&
+          options.map(option => (
+            <Option
+              key={option}
+              name={option}
+              options={options}
+              optionSelected={optionSelected}
+              setPlayerPick={setPlayerPick}
+              setOptionSelected={setOptionSelected}
+              setComputerPick={setComputerPick}
+              setOutcome={setOutcome}
+              setScore={setScore}
+            />
+          ))}
+
+        {optionSelected && (
+          <>
+            <PlayerPick name={playerPick} />
+            <ComputerPick name={computerPick} />
+            <Outcome outcome={outcome} />
+            <button onClick={playAgain}>Play Again</button>
+          </>
+        )}
+      </main>
     </ThemeProvider>
   );
 }
