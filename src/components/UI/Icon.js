@@ -13,10 +13,6 @@ const Icon = ({ name, onIconClick }) => {
 export default Icon;
 
 const Container = styled.button`
-  position: absolute;
-  left: 0;
-  right: 0;
-
   /* position: absolute;
   left: 0;
   right: 0;
@@ -35,6 +31,31 @@ const Container = styled.button`
   margin-left: ${props => props.name === 'lizard' && '5%'};
   margin-right: ${props => props.name === 'rock' && '5%'}; */
 
+  grid-column: ${props => props.name === 'spock' && '1/2'};
+  grid-row: ${props => props.name === 'spock' && '2/4'};
+  justify-self: ${props => props.name === 'spock' && 'center'};
+  align-self: ${props => props.name === 'spock' && 'center'};
+
+  grid-row: ${props => props.name === 'scissors' && '1'};
+  grid-column: ${props => props.name === 'scissors' && '1/-1'};
+  justify-self: ${props => props.name === 'scissors' && 'center'};
+  align-self: ${props => props.name === 'scissors' && 'center'};
+
+  grid-row: ${props => props.name === 'lizard' && '4/6'};
+  grid-column: ${props => props.name === 'lizard' && '1/3'};
+  justify-self: ${props => props.name === 'lizard' && 'start'};
+  align-self: ${props => props.name === 'lizard' && 'start'};
+
+  grid-row: ${props => props.name === 'rock' && '4/6'};
+  grid-column: ${props => props.name === 'rock' && '4/6'};
+  justify-self: ${props => props.name === 'rock' && 'end'};
+  align-self: ${props => props.name === 'rock' && 'start'};
+
+  grid-row: ${props => props.name === 'paper' && '2/4'};
+  grid-column: ${props => props.name === 'paper' && '5/6'};
+  justify-self: ${props => props.name === 'paper' && 'center'};
+  align-self: ${props => props.name === 'paper' && 'center'};
+
   border: none;
   margin: 4rem;
   width: 7.5rem;
@@ -44,9 +65,18 @@ const Container = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  //cursor: pointer;
+  cursor: pointer;
   box-shadow: 0 0.4rem 0 0.05rem
     hsl(${({ theme }) => theme.headerOutline} / 0.2) inset;
+
+  @media (min-width: 37.5em) {
+    & {
+      width: 11rem;
+      height: 11rem;
+      box-shadow: 0 0.6rem 0 0.05rem
+        hsl(${({ theme }) => theme.headerOutline} / 0.2) inset;
+    }
+  }
 
   &::before {
     content: '';
@@ -63,6 +93,17 @@ const Container = styled.button`
         const color = props.name;
         return props.theme[`${color}Dark`];
       }} inset;
+  }
+
+  @media (min-width: 37.5em) {
+    &::before {
+      width: 15rem;
+      height: 15rem;
+      box-shadow: 0 -0.6rem 0 0.05rem ${props => {
+          const color = props.name;
+          return props.theme[`${color}Dark`];
+        }} inset;
+    }
   }
 `;
 

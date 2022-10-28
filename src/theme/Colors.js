@@ -3,7 +3,7 @@ const theme = {
   scoreText: 'hsl(229, 64%, 46%)',
   headerOutline: '217 16% 45%',
   scissorsLight: 'hsl(40, 84%, 53%)',
-  scissorsDark: 'hsl(39, 95%, 48%)',
+  scissorsDark: 'hsl(40, 95%, 46%)',
   paperLight: 'hsl(230, 89%, 65%)',
   paperDark: 'hsl(230, 89%, 58%)',
   rockLight: 'hsl(349, 70%, 56%)',

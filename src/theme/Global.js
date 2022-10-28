@@ -26,6 +26,21 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 60%, 100%;  
+
+  @media (min-width: 37.5em){
+  & {
+    background-size: 30rem, 100%;  
+  }
+}
+}
+
+
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  
 }
 
 

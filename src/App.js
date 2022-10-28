@@ -3,11 +3,13 @@ import ComputerPick from './components/ComputerPick';
 import Option from './components/Option';
 import PlayerPick from './components/PlayerPick';
 import Outcome from './components/Outcome';
+import Header from './components/UI/Header';
 import { RPSLS, RPS } from './options';
 import getSavedScore from './helpers/getSavedScore';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './theme/Global';
 import theme from './theme/Colors';
+import IconsWrapper from './components/layout/IconsWrapper';
 
 function App() {
   const [options, setOptions] = useState(RPSLS); //add dropdown selection
@@ -30,22 +32,24 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <div>{score}</div>
+      <Header score={score} />
       <main>
-        {!optionSelected &&
-          options.map(option => (
-            <Option
-              key={option}
-              name={option}
-              options={options}
-              optionSelected={optionSelected}
-              setPlayerPick={setPlayerPick}
-              setOptionSelected={setOptionSelected}
-              setComputerPick={setComputerPick}
-              setOutcome={setOutcome}
-              setScore={setScore}
-            />
-          ))}
+        <IconsWrapper>
+          {!optionSelected &&
+            options.map(option => (
+              <Option
+                key={option}
+                name={option}
+                options={options}
+                optionSelected={optionSelected}
+                setPlayerPick={setPlayerPick}
+                setOptionSelected={setOptionSelected}
+                setComputerPick={setComputerPick}
+                setOutcome={setOutcome}
+                setScore={setScore}
+              />
+            ))}
+        </IconsWrapper>
 
         {optionSelected && (
           <>
