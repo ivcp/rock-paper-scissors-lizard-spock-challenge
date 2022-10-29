@@ -10,6 +10,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './theme/Global';
 import theme from './theme/Colors';
 import IconsWrapper from './components/layout/IconsWrapper';
+import OutcomeWrapper from './components/layout/OutcomeWrapper';
 
 function App() {
   const [options, setOptions] = useState(RPSLS); //add dropdown selection
@@ -34,9 +35,9 @@ function App() {
       <GlobalStyle />
       <Header score={score} />
       <main>
-        <IconsWrapper>
-          {!optionSelected &&
-            options.map(option => (
+        {!optionSelected && (
+          <IconsWrapper>
+            {options.map(option => (
               <Option
                 key={option}
                 name={option}
@@ -49,15 +50,15 @@ function App() {
                 setScore={setScore}
               />
             ))}
-        </IconsWrapper>
+          </IconsWrapper>
+        )}
 
         {optionSelected && (
-          <>
+          <OutcomeWrapper>
             <PlayerPick name={playerPick} />
             <ComputerPick name={computerPick} />
-            <Outcome outcome={outcome} />
-            <button onClick={playAgain}>Play Again</button>
-          </>
+            <Outcome outcome={outcome} playAgain={playAgain} />
+          </OutcomeWrapper>
         )}
       </main>
     </ThemeProvider>

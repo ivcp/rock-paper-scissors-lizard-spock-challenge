@@ -32,6 +32,7 @@ const Wrapper = styled.header`
     & {
       height: 15rem;
       width: 70rem;
+      margin-top: 5rem;
       border-radius: 1.5rem;
       padding-inline: 2.5rem;
     }

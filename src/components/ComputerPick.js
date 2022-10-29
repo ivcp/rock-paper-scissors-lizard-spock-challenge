@@ -1,7 +1,8 @@
 import React from 'react';
+import Icon from './UI/Icon';
 
 const ComputerPick = ({ name }) => {
-  return <div>{name}</div>;
+  return <Icon big name={name} color={name} />;
 };
 
 export default ComputerPick;
