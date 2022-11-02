@@ -19,4 +19,11 @@ const Outcome = ({ outcome, playAgain }) => {
 
 export default Outcome;
 
-const OutcomeWrapper = styled.div``;
+const OutcomeWrapper = styled.div`
+  & p {
+    font-size: 6rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+`;

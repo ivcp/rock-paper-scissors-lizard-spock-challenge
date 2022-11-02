@@ -17,8 +17,9 @@ html {
 body {
   font-family: 'Barlow Semi Condensed', sans-serif;
   min-height: 100vh;
-  background: hsl(214, 47%, 23%);   
-  background-image: url(${pentagon}), radial-gradient(
+  background: hsl(214, 47%, 23%);     
+  background-image: url(${props =>
+    props.bgImage ? null : pentagon}), radial-gradient(
     circle at 50% 10%,
     hsl(214, 47%, 23%) 20%,
     hsl(237, 49%, 15%) 100%
@@ -36,7 +37,8 @@ body {
 
 main {
   display: flex;
-  justify-content: center;
+  flex-direction: ${props => (props.bgImage ? 'column' : 'row')};
+  justify-content: ${props => (props.bgImage ? 'flex-start' : 'center')};
   align-items: center;
   height: 100vh;   
 }

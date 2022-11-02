@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import ComputerPick from './components/ComputerPick';
 import Option from './components/Option';
-import PlayerPick from './components/PlayerPick';
+import ChosenIcon from './components/ChosenIcon';
 import Outcome from './components/Outcome';
 import Header from './components/UI/Header';
 import { RPSLS, RPS } from './options';
@@ -10,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './theme/Global';
 import theme from './theme/Colors';
 import IconsWrapper from './components/layout/IconsWrapper';
-import OutcomeWrapper from './components/layout/OutcomeWrapper';
+import PicksWrapper from './components/layout/PicksWrapper';
 
 function App() {
   const [options, setOptions] = useState(RPSLS); //add dropdown selection
@@ -19,8 +18,6 @@ function App() {
   const [computerPick, setComputerPick] = useState('');
   const [outcome, setOutcome] = useState('');
   const [score, setScore] = useState(getSavedScore());
-
-  console.log('app render');
 
   useEffect(() => {
     localStorage.setItem('score', JSON.stringify(score));
@@ -32,7 +29,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
+      <GlobalStyle bgImage={optionSelected} />
       <Header score={score} />
       <main>
         {!optionSelected && (
@@ -54,11 +51,13 @@ function App() {
         )}
 
         {optionSelected && (
-          <OutcomeWrapper>
-            <PlayerPick name={playerPick} />
-            <ComputerPick name={computerPick} />
+          <>
+            <PicksWrapper>
+              <ChosenIcon player name={playerPick} />
+              <ChosenIcon name={computerPick} />
+            </PicksWrapper>
             <Outcome outcome={outcome} playAgain={playAgain} />
-          </OutcomeWrapper>
+          </>
         )}
       </main>
     </ThemeProvider>

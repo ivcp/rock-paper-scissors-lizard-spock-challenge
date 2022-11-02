@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from '../../theme/Colors';
 
 const PlayAgainBtn = ({ playAgain }) => {
   return <Btn onClick={playAgain}>Play Again</Btn>;
@@ -7,4 +8,14 @@ const PlayAgainBtn = ({ playAgain }) => {
 
 export default PlayAgainBtn;
 
-const Btn = styled.button``;
+const Btn = styled.button`
+  border: none;
+  background-color: #fff;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.darkText};
+  letter-spacing: 2px;
+`;
