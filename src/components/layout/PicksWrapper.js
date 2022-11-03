@@ -10,7 +10,8 @@ export default PicksWrapper;
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-block: 8rem;
+  margin-top: 8rem;
+  margin-bottom: 4rem;
 
   @media (min-width: 37.5em) {
     gap: 6rem;

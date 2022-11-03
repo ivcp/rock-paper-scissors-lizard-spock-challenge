@@ -1,15 +1,12 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useRef } from 'react';
 import styled from 'styled-components';
 import RPSLSlogo from '../../assets/logo-bonus.svg';
 
 const Header = ({ score }) => {
-  const scoreRef = useRef();
-  scoreRef.current = score;
-  const [displayScore, setDisplayScore] = useState(scoreRef.current);
-
+  const tempScore = score;
+  const [displayScore, setDisplayScore] = useState(tempScore);
   useEffect(() => {
     const timer = setTimeout(() => {
       setDisplayScore(score);

@@ -11,6 +11,8 @@ import theme from './theme/Colors';
 import IconsWrapper from './components/layout/IconsWrapper';
 import PicksWrapper from './components/layout/PicksWrapper';
 import useMediaQuery from './components/hooks/useMediaQueries';
+import RulesBtn from './components/UI/RulesBtn';
+import Overlay from './components/Overlay';
 
 function App() {
   const [options, setOptions] = useState(RPSLS); //add dropdown selection
@@ -19,6 +21,7 @@ function App() {
   const [computerPick, setComputerPick] = useState('');
   const [outcome, setOutcome] = useState('');
   const [score, setScore] = useState(getSavedScore());
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('score', JSON.stringify(score));
@@ -63,6 +66,8 @@ function App() {
             {!isDesktop && <Outcome outcome={outcome} playAgain={playAgain} />}
           </>
         )}
+        <RulesBtn setModalOpen={setModalOpen} />
+        {modalOpen && <Overlay setModalOpen={setModalOpen} />}
       </main>
     </ThemeProvider>
   );

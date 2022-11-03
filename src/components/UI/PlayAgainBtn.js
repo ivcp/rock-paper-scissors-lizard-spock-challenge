@@ -11,7 +11,7 @@ const Btn = styled.button`
   border: none;
   background-color: #fff;
   width: 100%;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   border-radius: 5px;
   text-transform: uppercase;
   font-size: 1.6rem;

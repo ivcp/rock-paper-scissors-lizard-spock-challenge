@@ -14,7 +14,7 @@ html {
   box-sizing: border-box;
 }
 
-body {
+body {  
   font-family: 'Barlow Semi Condensed', sans-serif;
   min-height: 100vh;
   background: hsl(214, 47%, 23%);     
@@ -36,11 +36,11 @@ body {
 }
 
 main {
-  display: flex;
+  display: flex;  
   flex-direction: ${props => (props.bgImage ? 'column' : 'row')};
   justify-content: ${props => (props.bgImage ? 'flex-start' : 'center')};
   align-items: center;
-  height: 100vh;   
+  height: calc(100vh - 12rem);   
 }
 
 
