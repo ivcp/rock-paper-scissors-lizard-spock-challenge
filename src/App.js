@@ -17,6 +17,7 @@ function App() {
   const [playerPick, setPlayerPick] = useState('');
   const [computerPick, setComputerPick] = useState('');
   const [outcome, setOutcome] = useState('');
+
   const [score, setScore] = useState(getSavedScore());
 
   useEffect(() => {
@@ -53,8 +54,8 @@ function App() {
         {optionSelected && (
           <>
             <PicksWrapper>
-              <ChosenIcon player name={playerPick} />
-              <ChosenIcon name={computerPick} />
+              <ChosenIcon player name={playerPick} outcome={outcome} />
+              <ChosenIcon name={computerPick} outcome={outcome} />
             </PicksWrapper>
             <Outcome outcome={outcome} playAgain={playAgain} />
           </>

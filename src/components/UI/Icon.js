@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import icons from '../../helpers/icons';
 
-const Icon = ({ name, onIconClick, big }) => {
+const Icon = ({ name, onIconClick, big, rings }) => {
+  const [showRings, setShowRings] = useState(false);
+
+  useEffect(() => {
+    if (!rings) return;
+    const timer = setTimeout(() => {
+      setShowRings(true);
+    }, 3000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [rings]);
+
   return (
-    <Container big={big} onClick={onIconClick} name={name}>
+    <Container big={big} rings={showRings} onClick={onIconClick} name={name}>
       <SrOnlyName>{name}</SrOnlyName>
       <ClickableSpan />
       <Image big={big} src={icons[name]} alt={name} />
@@ -81,7 +93,10 @@ const Container = styled.button`
     box-shadow: 0 -0.4rem 0 0.05rem ${props => {
         const color = props.name;
         return props.theme[`${color}Dark`];
-      }} inset;
+      }} inset ${props =>
+        props.rings &&
+        `, 0 0 0 7rem hsl(0 100% 100% / 0.03), 0 0 0 4rem hsl(0 100% 100% / 0.03),
+      0 0 0 1.5rem hsl(0 100% 100% / 0.03)`};
   }
 
   @media (min-width: 37.5em) {
@@ -93,7 +108,10 @@ const Container = styled.button`
       box-shadow: 0 -0.6rem 0 0.05rem ${props => {
           const color = props.name;
           return props.theme[`${color}Dark`];
-        }} inset;
+        }} inset ${props =>
+          props.rings &&
+          `, 0 0 0 15rem hsl(0 100% 100% / 0.03), 0 0 0 10rem hsl(0 100% 100% / 0.03),
+      0 0 0 5rem hsl(0 100% 100% / 0.03)`};
     }
   }
 `;
