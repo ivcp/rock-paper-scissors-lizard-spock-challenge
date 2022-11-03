@@ -41,4 +41,37 @@ const OutcomeWrapper = styled.div`
     text-transform: uppercase;
     margin-bottom: 2rem;
   }
+
+  @media (min-width: 37.5em) {
+    align-self: center;
+    margin-top: 6rem;
+    transform: scale(0);
+    animation-name: grow;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+
+    & p {
+      opacity: 1;
+      animation-name: blink;
+      animation-duration: 0.5s;
+      animation-iteration-count: 5;
+    }
+  }
+
+  @keyframes blink {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes grow {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
 `;

@@ -10,6 +10,7 @@ import GlobalStyle from './theme/Global';
 import theme from './theme/Colors';
 import IconsWrapper from './components/layout/IconsWrapper';
 import PicksWrapper from './components/layout/PicksWrapper';
+import useMediaQuery from './components/hooks/useMediaQueries';
 
 function App() {
   const [options, setOptions] = useState(RPSLS); //add dropdown selection
@@ -17,7 +18,6 @@ function App() {
   const [playerPick, setPlayerPick] = useState('');
   const [computerPick, setComputerPick] = useState('');
   const [outcome, setOutcome] = useState('');
-
   const [score, setScore] = useState(getSavedScore());
 
   useEffect(() => {
@@ -27,6 +27,8 @@ function App() {
   const playAgain = () => {
     setOptionSelected(false);
   };
+
+  const isDesktop = useMediaQuery('(min-width: 37.5em)');
 
   return (
     <ThemeProvider theme={theme}>
@@ -55,9 +57,10 @@ function App() {
           <>
             <PicksWrapper>
               <ChosenIcon player name={playerPick} outcome={outcome} />
+              {isDesktop && <Outcome outcome={outcome} playAgain={playAgain} />}
               <ChosenIcon name={computerPick} outcome={outcome} />
             </PicksWrapper>
-            <Outcome outcome={outcome} playAgain={playAgain} />
+            {!isDesktop && <Outcome outcome={outcome} playAgain={playAgain} />}
           </>
         )}
       </main>
