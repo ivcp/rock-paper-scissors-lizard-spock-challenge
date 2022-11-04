@@ -6,7 +6,12 @@ const ChangeGame = ({ changeGame }) => {
     changeGame(e.target.value);
   };
   return (
-    <Dropdown name="change-game" defaultValue="" onChange={handleChange}>
+    <Dropdown
+      name="change-game"
+      defaultValue=""
+      aria-label="change game"
+      onChange={handleChange}
+    >
       <option value="" disabled hidden>
         Change Game
       </option>

@@ -19,7 +19,7 @@ const Header = ({ score, optionSelected, options }) => {
 
   return (
     <Wrapper selected={optionSelected}>
-      <Title src={isRPS ? RPSlogo : RPSLSlogo} isRPS={isRPS} />
+      <Title src={isRPS ? RPSlogo : RPSLSlogo} isRPS={isRPS} alt="logo" />
       <ScoreWrapper>
         <p>SCORE</p>
         <span>{displayScore}</span>

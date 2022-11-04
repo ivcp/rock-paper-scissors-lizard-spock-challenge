@@ -30,7 +30,7 @@ const Icon = ({ name, onIconClick, big, rings, options }) => {
     >
       <SrOnlyName>{name}</SrOnlyName>
       <ClickableSpan />
-      <Image big={big} src={icons[name]} alt={name} />
+      <Image big={big} src={icons[name]} alt="" />
     </Container>
   );
 };
