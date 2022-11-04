@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import icons from '../../helpers/icons';
 
-const Icon = ({ name, onIconClick, big, rings }) => {
+const Icon = ({ name, onIconClick, big, rings, options }) => {
   const [showRings, setShowRings] = useState(false);
 
   useEffect(() => {
@@ -15,8 +15,19 @@ const Icon = ({ name, onIconClick, big, rings }) => {
     };
   }, [rings]);
 
+  let isTriangle;
+  if (!big && options.length === 3) {
+    isTriangle = true;
+  }
+
   return (
-    <Container big={big} rings={showRings} onClick={onIconClick} name={name}>
+    <Container
+      big={big}
+      isTriangle={isTriangle}
+      rings={showRings}
+      onClick={onIconClick}
+      name={name}
+    >
       <SrOnlyName>{name}</SrOnlyName>
       <ClickableSpan />
       <Image big={big} src={icons[name]} alt={name} />
@@ -51,6 +62,19 @@ const Container = styled.button`
   grid-column: ${props => props.name === 'paper' && '5/6'};
   justify-self: ${props => props.name === 'paper' && 'center'};
   align-self: ${props => props.name === 'paper' && 'center'};
+
+  ${props =>
+    props.isTriangle &&
+    props.name === 'paper' &&
+    'grid-row:1/3; grid-column:1/3;'}
+  ${props =>
+    props.isTriangle &&
+    props.name === 'scissors' &&
+    'grid-row:1/3; grid-column:4/-1;'}
+  ${props =>
+    props.isTriangle &&
+    props.name === 'rock' &&
+    'grid-row:3/6; grid-column:3/4; justify-self: center; align-self: center;'}
 
   position: relative;
   border: none;

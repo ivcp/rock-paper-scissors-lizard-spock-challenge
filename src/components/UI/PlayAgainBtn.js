@@ -21,11 +21,10 @@ const Btn = styled.button`
     padding: 1.5rem 2rem;
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: color 0.2s;
 
     &:hover {
-      background-color: #fff6;
-      color: #fff;
+      color: ${({ theme }) => theme.rockLight};
     }
   }
 `;

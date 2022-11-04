@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import RPSLSlogo from '../../assets/logo-bonus.svg';
 
-const Header = ({ score }) => {
+const Header = ({ score, optionSelected }) => {
   const tempScore = score;
   const [displayScore, setDisplayScore] = useState(tempScore);
   useEffect(() => {
@@ -17,7 +17,7 @@ const Header = ({ score }) => {
   }, [score]);
 
   return (
-    <Wrapper>
+    <Wrapper selected={optionSelected}>
       <Title src={RPSLSlogo} />
       <ScoreWrapper>
         <p>SCORE</p>
@@ -46,6 +46,7 @@ const Wrapper = styled.header`
       height: 15rem;
       width: 70rem;
       margin-top: 5rem;
+      margin-bottom: ${props => !props.selected && '5rem'};
       border-radius: 1.5rem;
       padding-inline: 2.5rem;
     }

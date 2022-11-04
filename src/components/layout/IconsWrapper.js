@@ -18,6 +18,7 @@ const Container = styled.div`
 
   @media (min-width: 37.5em) {
     & {
+      margin-bottom: 12rem;
       width: 40rem;
       height: 40rem;
     }

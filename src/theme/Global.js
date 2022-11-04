@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import pentagon from '../assets/bg-pentagon.svg';
+import triangle from '../assets/bg-triangle.svg';
 const GlobalStyle = createGlobalStyle`
 *,
 *::before,
@@ -18,8 +19,8 @@ body {
   font-family: 'Barlow Semi Condensed', sans-serif;
   min-height: 100vh;
   background: hsl(214, 47%, 23%);     
-  background-image: url(${props =>
-    props.bgImage ? null : pentagon}), radial-gradient(
+  background-image: url(${props => (props.bgImage ? null : props.shape)}), 
+  radial-gradient(
     circle at 50% 10%,
     hsl(214, 47%, 23%) 20%,
     hsl(237, 49%, 15%) 100%

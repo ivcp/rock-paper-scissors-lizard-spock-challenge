@@ -14,15 +14,18 @@ import useMediaQuery from './components/hooks/useMediaQueries';
 import RulesBtn from './components/UI/RulesBtn';
 import Overlay from './components/UI/Overlay';
 import Modal from './components/UI/Modal';
+import pentagon from './assets/bg-pentagon.svg';
+import triangle from './assets/bg-triangle.svg';
 
 function App() {
-  const [options, setOptions] = useState(RPSLS); //add dropdown selection
+  const [options, setOptions] = useState(RPS); //add dropdown selection
   const [optionSelected, setOptionSelected] = useState(false);
   const [playerPick, setPlayerPick] = useState('');
   const [computerPick, setComputerPick] = useState('');
   const [outcome, setOutcome] = useState('');
   const [score, setScore] = useState(getSavedScore());
   const [modalOpen, setModalOpen] = useState(false);
+  const [bgShape, setBgShape] = useState(triangle);
 
   useEffect(() => {
     localStorage.setItem('score', JSON.stringify(score));
@@ -34,10 +37,14 @@ function App() {
 
   const isDesktop = useMediaQuery('(min-width: 37.5em)');
 
+  const changeGame = () => {
+    setBgShape(triangle);
+  };
+
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle bgImage={optionSelected} />
-      <Header score={score} />
+      <GlobalStyle bgImage={optionSelected} shape={bgShape} options={options} />
+      <Header score={score} optionSelected={optionSelected} />
       <main>
         {!optionSelected && (
           <IconsWrapper>

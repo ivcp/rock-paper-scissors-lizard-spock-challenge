@@ -28,7 +28,14 @@ const Option = ({
       setScore(prev => (prev === 0 ? prev : prev - 1));
     }
   };
-  return <Icon onIconClick={handleClick} name={name} color={name} />;
+  return (
+    <Icon
+      onIconClick={handleClick}
+      name={name}
+      color={name}
+      options={options}
+    />
+  );
 };
 
 export default Option;
