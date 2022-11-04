@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import rules from '../../assets/image-rules-bonus.svg';
 import iconClose from '../../assets/icon-close.svg';
+
 const Modal = ({ setModalOpen }) => {
   const closeModal = () => {
     setModalOpen(false);

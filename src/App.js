@@ -10,7 +10,7 @@ import GlobalStyle from './theme/Global';
 import theme from './theme/Colors';
 import IconsWrapper from './components/layout/IconsWrapper';
 import PicksWrapper from './components/layout/PicksWrapper';
-import useMediaQuery from './components/hooks/useMediaQueries';
+import useMediaQuery from './hooks/useMediaQueries';
 import RulesBtn from './components/UI/RulesBtn';
 import Overlay from './components/UI/Overlay';
 import Modal from './components/UI/Modal';

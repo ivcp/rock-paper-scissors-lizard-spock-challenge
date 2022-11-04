@@ -1,6 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import pentagon from '../assets/bg-pentagon.svg';
-import triangle from '../assets/bg-triangle.svg';
 const GlobalStyle = createGlobalStyle`
 *,
 *::before,
