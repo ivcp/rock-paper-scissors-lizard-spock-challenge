@@ -12,7 +12,8 @@ import IconsWrapper from './components/layout/IconsWrapper';
 import PicksWrapper from './components/layout/PicksWrapper';
 import useMediaQuery from './components/hooks/useMediaQueries';
 import RulesBtn from './components/UI/RulesBtn';
-import Overlay from './components/Overlay';
+import Overlay from './components/UI/Overlay';
+import Modal from './components/UI/Modal';
 
 function App() {
   const [options, setOptions] = useState(RPSLS); //add dropdown selection
@@ -67,7 +68,11 @@ function App() {
           </>
         )}
         <RulesBtn setModalOpen={setModalOpen} />
-        {modalOpen && <Overlay setModalOpen={setModalOpen} />}
+        {!isDesktop && modalOpen && <Modal setModalOpen={setModalOpen} />}
+        {isDesktop && modalOpen && <Overlay setModalOpen={setModalOpen} />}
+        {isDesktop && modalOpen && <Modal setModalOpen={setModalOpen} />}
+
+        {/* <Overlay setModalOpen={setModalOpen} /> */}
       </main>
     </ThemeProvider>
   );

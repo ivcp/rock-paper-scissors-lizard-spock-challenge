@@ -22,4 +22,15 @@ const Btn = styled.button`
   letter-spacing: 2px;
   font-size: 1.6rem;
   font-weight: 600;
+  transition: background, border 0.2s;
+
+  @media (min-width: 37.5em) {
+    right: 5%;
+    bottom: 5%;
+    cursor: pointer;
+    &:hover {
+      background-color: #fff2;
+      border: solid transparent;
+    }
+  }
 `;

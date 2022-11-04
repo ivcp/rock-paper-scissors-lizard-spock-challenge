@@ -39,7 +39,7 @@ main {
   display: flex;  
   flex-direction: ${props => (props.bgImage ? 'column' : 'row')};
   justify-content: ${props => (props.bgImage ? 'flex-start' : 'center')};
-  align-items: center;
+    align-items: center;
   height: calc(100vh - 12rem);   
 }
 
