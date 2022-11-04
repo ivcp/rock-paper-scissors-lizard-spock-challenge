@@ -16,16 +16,17 @@ import Overlay from './components/UI/Overlay';
 import Modal from './components/UI/Modal';
 import pentagon from './assets/bg-pentagon.svg';
 import triangle from './assets/bg-triangle.svg';
+import ChangeGame from './components/UI/ChangeGame';
 
 function App() {
-  const [options, setOptions] = useState(RPS); //add dropdown selection
+  const [options, setOptions] = useState(RPSLS);
   const [optionSelected, setOptionSelected] = useState(false);
   const [playerPick, setPlayerPick] = useState('');
   const [computerPick, setComputerPick] = useState('');
   const [outcome, setOutcome] = useState('');
   const [score, setScore] = useState(getSavedScore());
   const [modalOpen, setModalOpen] = useState(false);
-  const [bgShape, setBgShape] = useState(triangle);
+  const [bgShape, setBgShape] = useState(pentagon);
 
   useEffect(() => {
     localStorage.setItem('score', JSON.stringify(score));
@@ -35,16 +36,23 @@ function App() {
     setOptionSelected(false);
   };
 
-  const isDesktop = useMediaQuery('(min-width: 37.5em)');
-
-  const changeGame = () => {
-    setBgShape(triangle);
+  const changeGame = value => {
+    if (value === 'RPSLS') {
+      setOptions(RPSLS);
+      setBgShape(pentagon);
+    }
+    if (value === 'RPS') {
+      setOptions(RPS);
+      setBgShape(triangle);
+    }
   };
+
+  const isDesktop = useMediaQuery('(min-width: 37.5em)');
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle bgImage={optionSelected} shape={bgShape} options={options} />
-      <Header score={score} optionSelected={optionSelected} />
+      <Header score={score} optionSelected={optionSelected} options={options} />
       <main>
         {!optionSelected && (
           <IconsWrapper>
@@ -78,8 +86,7 @@ function App() {
         {!isDesktop && modalOpen && <Modal setModalOpen={setModalOpen} />}
         {isDesktop && modalOpen && <Overlay setModalOpen={setModalOpen} />}
         {isDesktop && modalOpen && <Modal setModalOpen={setModalOpen} />}
-
-        {/* <Overlay setModalOpen={setModalOpen} /> */}
+        <ChangeGame changeGame={changeGame} />
       </main>
     </ThemeProvider>
   );

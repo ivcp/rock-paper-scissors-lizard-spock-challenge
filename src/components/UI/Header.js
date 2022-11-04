@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import RPSLSlogo from '../../assets/logo-bonus.svg';
+import RPSlogo from '../../assets/logo.svg';
 
-const Header = ({ score, optionSelected }) => {
+const Header = ({ score, optionSelected, options }) => {
   const tempScore = score;
   const [displayScore, setDisplayScore] = useState(tempScore);
   useEffect(() => {
@@ -16,9 +17,11 @@ const Header = ({ score, optionSelected }) => {
     };
   }, [score]);
 
+  const isRPS = options.length === 3;
+
   return (
     <Wrapper selected={optionSelected}>
-      <Title src={RPSLSlogo} />
+      <Title src={isRPS ? RPSlogo : RPSLSlogo} isRPS={isRPS} />
       <ScoreWrapper>
         <p>SCORE</p>
         <span>{displayScore}</span>
@@ -57,7 +60,7 @@ const Title = styled.img`
   height: 50%;
   @media (min-width: 37.5em) {
     & {
-      height: 75%;
+      height: ${props => (props.isRPS ? '60%' : '75%')};
     }
   }
 `;

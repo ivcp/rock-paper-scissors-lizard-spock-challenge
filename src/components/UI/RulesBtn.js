@@ -13,6 +13,7 @@ export default RulesBtn;
 const Btn = styled.button`
   position: absolute;
   bottom: 0;
+  right: 2rem;
   border: none;
   background-color: transparent;
   padding: 1rem 4rem;
